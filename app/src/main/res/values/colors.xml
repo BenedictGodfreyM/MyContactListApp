@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="AshenValeNights">#104071</color>
+    <color name="SeaFantasy">#1A9597</color>
+    <color name="MauiMist">#EEF2F3</color>
+    <color name="PaleGrey">#FDFDFE</color>
+</resources>
