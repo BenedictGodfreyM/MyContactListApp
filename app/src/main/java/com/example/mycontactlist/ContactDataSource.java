@@ -2,6 +2,7 @@ package com.example.mycontactlist;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -51,10 +52,24 @@ public class ContactDataSource {
             updateValues.put( "cellnumber" , c.getCellNumber());
             updateValues.put( "email" , c.getEMail());
             updateValues.put( "birthday" , String.valueOf(c.getBirthday().toMillis( false )));
-            didSucceed = database .update( "contact" , updateValues, "_id=" + rowId, null ) > 0;
+            didSucceed = database.update( "contact" , updateValues, "_id=" + rowId, null ) > 0;
         }catch (Exception e) {
             //Do nothing -will return false if there is an exception
         }
         return didSucceed;
     }
+    public int getLastContactId() {
+        int lastId = -1;
+        try {
+            String query = "Select MAX(_id) from contact" ;
+            Cursor cursor = database.rawQuery(query, null );
+            cursor.moveToFirst();
+            lastId = cursor.getInt(0);
+            cursor.close();
+        }catch (Exception e) {
+            lastId = -1;
+        }
+        return lastId;
+    }
+
 }
