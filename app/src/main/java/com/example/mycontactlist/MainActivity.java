@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.settingsOption){
-//            Open Settings Activity
+            Intent intent = new Intent(MainActivity.this, ContactSettingsActivity.class);
+            startActivity(intent);
         }else if(id == R.id.exitAppOption){
             finish();
         }
