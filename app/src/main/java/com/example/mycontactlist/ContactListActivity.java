@@ -5,16 +5,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
+
 public class ContactListActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
+    ListView listView;
     FloatingActionButton addContactButton;
 
     @Override
@@ -24,7 +27,13 @@ public class ContactListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_list);
         getSupportActionBar().setTitle("Contacts");
 
-        recyclerView = findViewById(R.id.recyclerView);
+        listView = findViewById(R.id.listView);
+        ContactDataSource ds = new ContactDataSource(this);
+        ds.open();
+        final ArrayList<Contact> contacts = ds.getContacts();
+        ds.close();
+        listView.setAdapter( new ContactAdapter( this , contacts));
+
         addContactButton = findViewById(R.id.addContactButton);
         addContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
