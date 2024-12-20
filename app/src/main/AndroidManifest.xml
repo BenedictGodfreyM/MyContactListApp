@@ -20,7 +20,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="My Contact List">
+            android:label="Contacts">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
