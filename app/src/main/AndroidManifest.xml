@@ -16,14 +16,14 @@
             android:name=".ContactSettingsActivity"
             android:exported="false"
             android:label="Contact Settings"
-            android:parentActivityName=".ContactActivity" />
-        <activity
-            android:name=".AddContactActivity"
-            android:exported="false"
-            android:label="Add Contact"
-            android:parentActivityName=".ContactActivity" />
+            android:parentActivityName=".ContactListActivity" />
         <activity
             android:name=".ContactActivity"
+            android:exported="false"
+            android:label="Add Contact"
+            android:parentActivityName=".ContactListActivity" />
+        <activity
+            android:name=".ContactListActivity"
             android:exported="true"
             android:label="Contacts">
             <intent-filter>

@@ -1,55 +1,80 @@
 package com.example.mycontactlist;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ContactActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    FloatingActionButton addContactButton;
+    EditText contactNameInput;
+    EditText streetAddressInput;
+    EditText cityInput;
+    EditText stateInput;
+    EditText zipCodeInput;
+    EditText phoneNumberInput;
+    EditText cellPhoneNumberInput;
+    EditText emailAddressInput;
+    EditText birthdayInput;
+    Button addContactButton;
+    private Contact currentContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_contact);
-        getSupportActionBar().setTitle("Contacts");
+        getSupportActionBar().setTitle("Add Contact");
 
-        recyclerView = findViewById(R.id.recyclerView);
+        contactNameInput = findViewById(R.id.enterContactName);
+        streetAddressInput = findViewById(R.id.enterStreetAddress);
+        cityInput = findViewById(R.id.enterCity);
+        stateInput = findViewById(R.id.enterState);
+        zipCodeInput = findViewById(R.id.enterZipCode);
+        phoneNumberInput = findViewById(R.id.enterPhoneNumber);
+        cellPhoneNumberInput = findViewById(R.id.enterCellPhoneNumber);
+        emailAddressInput = findViewById(R.id.enterEmailAddress);
+        birthdayInput = findViewById(R.id.enterBirthday);
         addContactButton = findViewById(R.id.addContactButton);
+
         addContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ContactActivity.this, AddContactActivity.class);
-                startActivity(intent);
+                currentContact = new Contact();
+                currentContact.setContactName(contactNameInput.getText().toString());
+                currentContact.setStreetAddress(streetAddressInput.getText().toString());
+                currentContact.setCity(cityInput.getText().toString());
+                currentContact.setState(stateInput.getText().toString());
+                currentContact.setZipCode(zipCodeInput.getText().toString());
+                currentContact.setPhoneNumber(phoneNumberInput.getText().toString());
+                currentContact.setCellNumber(cellPhoneNumberInput.getText().toString());
+                currentContact.setEMail(emailAddressInput.getText().toString());
+
+                ContactDataSource ds = new ContactDataSource(ContactActivity.this );
+                ds.open();
+                int newId = ds.getLastContactId();
+                currentContact .setContactID(newId);
+                boolean wasSuccessful = false ;
+                wasSuccessful = ds.insertContact( currentContact );
+                ds.close();
+                if (wasSuccessful) {
+                    contactNameInput.setText("");
+                    streetAddressInput.setText("");
+                    cityInput.setText("");
+                    stateInput.setText("");
+                    zipCodeInput.setText("");
+                    phoneNumberInput.setText("");
+                    cellPhoneNumberInput.setText("");
+                    emailAddressInput.setText("");
+                    birthdayInput.setText("");
+                    Toast.makeText(ContactActivity.this,"Contact added!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(ContactActivity.this,"Unable to add contact!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if(id == R.id.settingsOption){
-            Intent intent = new Intent(ContactActivity.this, ContactSettingsActivity.class);
-            startActivity(intent);
-        }else if(id == R.id.exitAppOption){
-            finish();
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
