@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MainActivity extends AppCompatActivity {
+public class ContactActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     FloatingActionButton addContactButton;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_contact);
         getSupportActionBar().setTitle("Contacts");
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         addContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddContactActivity.class);
+                Intent intent = new Intent(ContactActivity.this, AddContactActivity.class);
                 startActivity(intent);
             }
         });
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.settingsOption){
-            Intent intent = new Intent(MainActivity.this, ContactSettingsActivity.class);
+            Intent intent = new Intent(ContactActivity.this, ContactSettingsActivity.class);
             startActivity(intent);
         }else if(id == R.id.exitAppOption){
             finish();
