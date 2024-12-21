@@ -28,16 +28,6 @@ public class ContactListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contact_list);
         getSupportActionBar().setTitle("Contacts");
 
-        listView = findViewById(R.id.listView);
-        String sortBy = getSharedPreferences("MyContactListPreferences", Context. MODE_PRIVATE ).getString("sortfield" , "contactname");
-        String sortOrder = getSharedPreferences("MyContactListPreferences", Context. MODE_PRIVATE ).getString("sortorder" , "ASC");
-
-        ContactDataSource ds = new ContactDataSource(this);
-        ds.open();
-        final ArrayList<Contact> contacts = ds.getContacts(sortBy, sortOrder);
-        ds.close();
-        listView.setAdapter( new ContactAdapter( this , contacts));
-
         addContactButton = findViewById(R.id.addContactButton);
         addContactButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +36,21 @@ public class ContactListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        String sortBy = getSharedPreferences("MyContactListPreferences", Context. MODE_PRIVATE ).getString("sortfield" , "contactname");
+        String sortOrder = getSharedPreferences("MyContactListPreferences", Context. MODE_PRIVATE ).getString("sortorder" , "ASC");
+
+        ContactDataSource ds = new ContactDataSource(this);
+        ds.open();
+        final ArrayList<Contact> contacts = ds.getContacts(sortBy, sortOrder);
+        ds.close();
+        listView = findViewById(R.id.listView);
+        listView.setAdapter( new ContactAdapter( this , contacts));
     }
 
     @Override
