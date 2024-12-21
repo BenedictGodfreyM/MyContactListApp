@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -14,83 +14,104 @@
         android:background="@color/AshenValeNights"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
-    <TextView
-        android:id="@+id/sortContactByTextView"
-        android:layout_width="356dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="70dp"
-        android:text="Sort Contact By:"
-        android:textSize="30sp"
-        android:textColor="@color/HadopelagicWater"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar3" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar3">
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sortContactByTextView">
-
-        <RadioButton
-            android:id="@+id/radioName"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name" />
+            android:layout_height="wrap_content">
 
-        <RadioButton
-            android:id="@+id/radioCity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="City" />
+            <TextView
+                android:id="@+id/sortContactByTextView"
+                android:layout_width="356dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="Sort Contact By:"
+                android:textColor="@color/HadopelagicWater"
+                android:textSize="22sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/radioBirthday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Birthday" />
-    </RadioGroup>
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sortContactByTextView">
 
-    <TextView
-        android:id="@+id/sortOrderTextView"
-        android:layout_width="356dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:text="Sort Order:"
-        android:textSize="30sp"
-        android:textColor="@color/HadopelagicWater"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup1" />
+                <RadioButton
+                    android:id="@+id/radioName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:textSize="14sp"
+                    android:textColor="@color/HadopelagicWater" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sortOrderTextView">
+                <RadioButton
+                    android:id="@+id/radioCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="City"
+                    android:textSize="14sp"
+                    android:textColor="@color/HadopelagicWater" />
 
-        <RadioButton
-            android:id="@+id/radioAscending"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ascending" />
+                <RadioButton
+                    android:id="@+id/radioBirthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Birthday"
+                    android:textSize="14sp"
+                    android:textColor="@color/HadopelagicWater" />
+            </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/radioDescending"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descending" />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/sortOrderTextView"
+                android:layout_width="356dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sort Order:"
+                android:textSize="22sp"
+                android:textColor="@color/HadopelagicWater"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sortOrderTextView">
+
+                <RadioButton
+                    android:id="@+id/radioAscending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ascending"
+                    android:textSize="14sp"
+                    android:textColor="@color/HadopelagicWater"/>
+
+                <RadioButton
+                    android:id="@+id/radioDescending"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Descending"
+                    android:textSize="14sp"
+                    android:textColor="@color/HadopelagicWater" />
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
