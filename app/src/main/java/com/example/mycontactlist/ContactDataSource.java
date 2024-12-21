@@ -74,27 +74,10 @@ public class ContactDataSource {
         }
         return lastId;
     }
-    public ArrayList<String> getContactName() {
-        ArrayList<String> contactNames = new ArrayList<String>();
-        try {
-            String query = "Select contactname from contact" ;
-            Cursor cursor = database .rawQuery(query, null );
-            cursor.moveToFirst();
-            while (!cursor.isAfterLast()) {
-                contactNames.add(cursor.getString(0));
-                cursor.moveToNext();
-            }
-            cursor.close();
-        }
-        catch (Exception e) {
-            contactNames = new ArrayList<String>();
-        }
-        return contactNames;
-    }
-    public ArrayList<Contact> getContacts() {
+    public ArrayList<Contact> getContacts(String sortField, String sortOrder) {
         ArrayList<Contact> contacts = new ArrayList<Contact>();
         try {
-            String query = "SELECT * FROM contact" ;
+            String query = "SELECT * FROM contact ORDER BY " + sortField + " " + sortOrder;
             Cursor cursor = database .rawQuery(query, null);
             Contact newContact;
             cursor.moveToFirst();

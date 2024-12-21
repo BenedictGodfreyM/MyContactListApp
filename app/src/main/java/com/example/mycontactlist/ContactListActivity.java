@@ -1,5 +1,6 @@
 package com.example.mycontactlist;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,9 +29,12 @@ public class ContactListActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Contacts");
 
         listView = findViewById(R.id.listView);
+        String sortBy = getSharedPreferences("MyContactListPreferences", Context. MODE_PRIVATE ).getString("sortfield" , "contactname");
+        String sortOrder = getSharedPreferences("MyContactListPreferences", Context. MODE_PRIVATE ).getString("sortorder" , "ASC");
+
         ContactDataSource ds = new ContactDataSource(this);
         ds.open();
-        final ArrayList<Contact> contacts = ds.getContacts();
+        final ArrayList<Contact> contacts = ds.getContacts(sortBy, sortOrder);
         ds.close();
         listView.setAdapter( new ContactAdapter( this , contacts));
 
