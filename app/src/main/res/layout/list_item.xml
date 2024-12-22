@@ -10,22 +10,20 @@
         android:id="@+id/textContactName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15sp"
+        android:layout_marginStart="15sp"
         android:text="Contact Name"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/HadopelagicWater" />
+        style="@style/MAIN_TEXT" />
 
     <TextView
         android:id="@+id/textPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textContactName"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="15sp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15sp"
         android:text="Phone Number"
-        android:textColor="@color/SeaFantasy"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        style="@style/SUBTEXT" />
 
 </RelativeLayout>

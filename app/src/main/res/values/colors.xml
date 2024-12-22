@@ -3,8 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="HadopelagicWater">#000022</color>
+    <color name="PrestigeGreen">#154647</color>
     <color name="AshenValeNights">#104071</color>
     <color name="SeaFantasy">#1A9597</color>
+    <color name="DecemberSky">#D5D7D9</color>
     <color name="MauiMist">#EEF2F3</color>
     <color name="PaleGrey">#FDFDFE</color>
 </resources>
