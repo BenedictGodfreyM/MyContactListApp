@@ -2,6 +2,7 @@ package com.example.mycontactlist;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +27,8 @@ public class ContactListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_contact_list);
+        int colorFromResources = getResources().getColor(R.color.AshenValeNights, null);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(colorFromResources));
         getSupportActionBar().setTitle("Contacts");
 
         addContactButton = findViewById(R.id.addContactButton);

@@ -1,6 +1,7 @@
 package com.example.mycontactlist;
 
 import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -23,6 +24,8 @@ public class ContactSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_contact_settings);
+        int colorFromResources = getResources().getColor(R.color.AshenValeNights, null);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(colorFromResources));
         getSupportActionBar().setTitle("Contact Settings");
 
         rbName = (RadioButton) findViewById(R.id.radioName);

@@ -1,5 +1,6 @@
 package com.example.mycontactlist;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,8 @@ public class ContactActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_contact);
+        int colorFromResources = getResources().getColor(R.color.AshenValeNights, null);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(colorFromResources));
         getSupportActionBar().setTitle("Add Contact");
 
         contactNameInput = findViewById(R.id.enterContactName);
