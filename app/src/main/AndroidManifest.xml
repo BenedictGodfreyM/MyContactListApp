@@ -21,6 +21,7 @@
             android:name=".ContactActivity"
             android:exported="false"
             android:label="Add Contact"
+            android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".ContactListActivity" />
         <activity
             android:name=".ContactListActivity"
